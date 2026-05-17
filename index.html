@@ -126,31 +126,39 @@
   }
   .btn-secondary:hover { background: var(--cream); }
 
-  .hero-cafe-image{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:20px;
-  display:block;
-}
-  .latte-art { position: absolute; width: 100px; height: 90px; top: 16px; left: 50%; transform: translateX(-50%); }
-  .leaf-stem { position: absolute; bottom: 0; left: 50%; width: 2px; height: 60px; background: rgba(196,135,42,0.5); transform: translateX(-50%); }
-  .leaf { position: absolute; width: 30px; height: 18px; background: rgba(196,135,42,0.35); border-radius: 50% 0 50% 0; transform-origin: center right; }
-  .leaf:nth-child(2) { bottom: 20px; left: 28px; transform: rotate(-40deg); }
-  .leaf:nth-child(3) { bottom: 30px; left: 28px; transform: rotate(-140deg) scaleX(-1); }
-  .leaf:nth-child(4) { bottom: 38px; left: 28px; transform: rotate(-50deg); }
-
+  /* HERO IMAGE PANEL */
+  .hero-image {
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* Dark overlay so badge text is readable */
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(28,18,8,0.55) 0%, transparent 50%);
+    pointer-events: none;
+  }
   .hero-badge {
     position: absolute;
-    bottom: 3rem; left: 3rem;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
+    bottom: 2.5rem; left: 2.5rem;
+    z-index: 2;
+    background: rgba(28,18,8,0.45);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 12px;
     padding: 1rem 1.5rem;
     color: var(--cream);
   }
   .hero-badge .stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: 0.3rem; }
-  .hero-badge p { font-size: 0.8rem; opacity: 0.7; }
+  .hero-badge p { font-size: 0.8rem; opacity: 0.85; }
 
   /* ABOUT STRIP */
   .about-strip {
@@ -287,8 +295,8 @@
     .hamburger { display: flex; }
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-text { padding: 2.5rem 1.5rem; }
-    .hero-image { height: 320px; }
-    .hero-badge { display: none; }
+    .hero-image { min-height: 300px; }
+    .hero-badge { bottom: 1.5rem; left: 1.5rem; }
     .about-strip { padding: 2rem 1.5rem; gap: 1.5rem; }
     .strip-divider { display: none; }
     section, .gallery, .contact { padding: 3rem 1.5rem; }
@@ -330,24 +338,10 @@
     </div>
   </div>
   <div class="hero-image">
-  <div class="hero-image-inner">
-    
-    <img 
+    <img
       src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop"
-      alt="Cafe interior"
-      class="hero-cafe-image"
+      alt="The Harbour Roast café interior"
     >
-
-  </div>
-</div>
-        <div class="cup-saucer"></div>
-        <div class="steam">
-          <div class="steam-line"></div>
-          <div class="steam-line"></div>
-          <div class="steam-line"></div>
-        </div>
-      </div>
-    </div>
     <div class="hero-badge">
       <div class="stars">★★★★★</div>
       <p>"Best flat white in town" — The Local Guide</p>
@@ -574,11 +568,11 @@
   <p class="section-label">Life at The Harbour Roast</p>
   <h2 class="section-title">From our <em>café</em></h2>
   <div class="gallery-grid">
-    <div class="gallery-item g1"><img src="https://media.timeout.com/images/104685282/750/562/image.webp" alt="coffee" style="width:100%;height:100%;object-fit:cover;"></div>
-    <div class="gallery-item g2"><img src="https://biancolievito.it/wp-content/uploads/2024/02/shutterstock_574919893-768x516.webp" style="width:100%;height:100%;object-fit:cover;"></div>
-    <div class="gallery-item g3"><img src="https://currybien.co.uk/wp-content/uploads/2026/03/buddha-bowl-healthy-and-balanced-food-2026-01-09-07-13-16-utc-750x375.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
-    <div class="gallery-item g4"><img src="https://www.miaminewtimes.com/wp-content/uploads/sites/4/ww-media/mediaserver/mia/2020-11/_js_4273.webp?resize=743,495" style="width:100%;height:100%;object-fit:cover;"></div>
-    <div class="gallery-item g5"><img src="https://www.clairejustineoxox.com/wp-content/uploads/2023/07/Le-Rustique-Camembert-Fig-And-Basil-Sourdough-Toastie-800x533.png" style="width:100%;height:100%;object-fit:cover;"></div>
+    <div class="gallery-item g1"><img src="https://media.timeout.com/images/104685282/750/562/image.webp" alt="Coffee" style="width:100%;height:100%;object-fit:cover;"></div>
+    <div class="gallery-item g2"><img src="https://biancolievito.it/wp-content/uploads/2024/02/shutterstock_574919893-768x516.webp" alt="Pastry" style="width:100%;height:100%;object-fit:cover;"></div>
+    <div class="gallery-item g3"><img src="https://currybien.co.uk/wp-content/uploads/2026/03/buddha-bowl-healthy-and-balanced-food-2026-01-09-07-13-16-utc-750x375.jpg" alt="Bowl" style="width:100%;height:100%;object-fit:cover;"></div>
+    <div class="gallery-item g4"><img src="https://www.miaminewtimes.com/wp-content/uploads/sites/4/ww-media/mediaserver/mia/2020-11/_js_4273.webp?resize=743,495" alt="Brunch" style="width:100%;height:100%;object-fit:cover;"></div>
+    <div class="gallery-item g5"><img src="https://www.clairejustineoxox.com/wp-content/uploads/2023/07/Le-Rustique-Camembert-Fig-And-Basil-Sourdough-Toastie-800x533.png" alt="Toastie" style="width:100%;height:100%;object-fit:cover;"></div>
   </div>
 </div>
 
